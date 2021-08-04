@@ -1,0 +1,39 @@
+## DESCRIPTION
+## Differencial Equations problem: transforms laplace
+## ENDDESCRIPTION
+## KEYWORDS('laplace', 'transforms', 'equations')
+## DBsubject('Differential Equations')
+## DBchapter('Laplace Transforms')
+## DBsection('Inverse Laplace Transform')
+## Date('5/24/2021')
+## Author('Leonardo Alvarez V','Luis F. Alvarez Alvarez V','Hernando Alvarez R')
+## Institution('UNIVERSIDAD TECNOLOGICA DE PEREIRA')
+## TitleText1('Differential Equations')
+## EditionText1('4')
+## AuthorText1('Blanchard, Devaney, Hall')
+## Section1('6.1')
+## Problem1('5')
+DOCUMENT();
+loadMacros(
+    "PGstandard.pl", # Standard macros for PG language
+    "MathObjects.pl",);
+TEXT(beginproblem());
+Context("Numeric");
+Context()->variables->add(t=>"Real");
+Context()->variables->add(s=>"Real");
+$a=random(2,9,1);
+$L=Formula("$a/(3s+5)");
+$Linverse = Formula("($a*e^(-5*t/3))/3");
+Context()->texStrings;
+BEGIN_TEXT
+Find the inverse Laplace transform of the given function.
+\[$a/(3s+5)\]
+$BR
+\(L^{-1}($a/(3s+5))=y(t)=\)\{ans_rule(20)\}
+$BR
+END_TEXT
+Context()->normalStrings;
+ANS($Linverse->cmp);
+ENDDOCUMENT();
+
+
