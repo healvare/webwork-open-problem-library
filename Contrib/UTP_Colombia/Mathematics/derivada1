@@ -1,0 +1,41 @@
+##DESCRIPTION
+## The algebra of derivatives problem
+##ENDDESCRIPTION
+##KEYWORDS(&#39;derivates&#39;, &#39;derived from a quotient&#39;, &#39;derivative formulas&#39;)
+## DBsubject(&#39;Differential calculus&#39;)
+## DBchapter(&#39;The algebra of derivatives&#39;)
+## DBsection(&#39;derived from a quotient&#39;)
+## Date(&#39;5/25/2021&#39;)
+## Author(&#39;Leonardo Alvarez V&#39;,&#39;Luis F. Alvarez Alvarez V&#39;,&#39;Hernando Alvarez R&#39;)
+## Institution(&#39;UNIVERSIDAD TECNOLOGICA DE PEREIRA&#39;)
+## TitleText1(&#39;Calculus Volumen I&#39;)
+## EditionText1(&#39;2&#39;)
+## AuthorText1(&#39;Tom M.Apostol&#39;)
+## Section1(&#39;4.6&#39;)
+## Problem1(&#39;33&#39;)
+
+DOCUMENT();
+loadMacros(
+&quot;PGstandard.pl&quot;, # Standard macros for PG language
+&quot;MathObjects.pl&quot;,
+);
+TEXT(beginproblem());
+$a=random(2,9,1);
+$b=random(1,8,1);
+$c=random(3,7,1);
+$d=random(4,6,1);
+$f=Formula(&quot;($a*x+$b)/($c*x+$d)&quot;);
+$fderivative = Formula(&quot;($a*$d-$b*$c)/($c*x+$d)^2&quot;);
+Context()-&gt;texStrings;
+BEGIN_TEXT
+Compute the derivative y&#39;(x). It is understood that the formula
+holds for those x for which y(x) is defined.
+\[y=\frac{$a x+$b}{$c x+$d}\]
+$BR
+\(y&#39;(x)=\)\{ans_rule(20)\}
+$BR
+END_TEXT
+Context()-&gt;normalStrings;
+ANS($fderivative-&gt;cmp);
+ENDDOCUMENT();
+
